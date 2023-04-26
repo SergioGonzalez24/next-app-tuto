@@ -21,10 +21,10 @@ jobs:
         
     - name: Install dependencies
       run: |
-        cd next-first-app-tuto
+        cd ./next-first-app-tuto
         npm install
       
     - name: Run integration tests
       run: |
-        cd next-first-app-tuto
+        cd ./next-first-app-tuto
         npm run test:integration
