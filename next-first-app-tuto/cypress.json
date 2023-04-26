@@ -1,0 +1,10 @@
+{
+    "baseUrl": "http://localhost:3000",
+    "ignoreTestFiles": ["*.js"],
+    "testFiles": "**/*.spec.js",
+    "video": false,
+    "screenshotsFolder": "cypress/screenshots",
+    "videosFolder": "cypress/videos",
+    "pluginsFile": false
+  }
+  
