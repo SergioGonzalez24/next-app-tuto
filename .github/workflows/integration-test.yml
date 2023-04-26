@@ -20,7 +20,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         
     - name: Install dependencies
-      run: npm install
+      run: cd ./next-first-app-tuto && npm ci
       
     - name: Run integration tests
-      run: npm run test:integration
+      # npm run test:integration
+      run: cd ./next-first-app-tuto && npm run test
