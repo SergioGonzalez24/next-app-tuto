@@ -12,19 +12,31 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
-      
+      uses: actions/checkout@v2
+
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        
+
     - name: Install dependencies
       run: |
         cd ./next-first-app-tuto
         npm install
-      
-    - name: Run integration tests
+
+    - name: Start the development server
       run: |
         cd ./next-first-app-tuto
-        npm run test:integration
+        npm run dev &
+        sleep 10
+
+    - name: Run integration tests
+      uses: cypress-io/github-action@v2
+      with:
+        start: npm run start
+        wait-on: 'http://localhost:3000'
+        browser: chromium
+        working-directory: ./next-first-app-tuto
+        record: false
+        env: |
+          CYPRESS_BASE_URL=http://localhost:3000
